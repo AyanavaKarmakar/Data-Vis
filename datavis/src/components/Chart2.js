@@ -1,7 +1,7 @@
 import ReactEcharts from "echarts-for-react";
 
 
-const Chart1 = () => {
+const Chart2 = () => {
   return (
     <>
       <ReactEcharts
@@ -15,7 +15,7 @@ const Chart1 = () => {
           },
           series: [{ 
             data: [820, 932, 901, 934, 1290, 1330, 1320],
-            type: "scatter"
+            type: "bar"
           }]
         }}
       />
@@ -23,4 +23,4 @@ const Chart1 = () => {
   );
 };
 
-export default Chart1;
+export default Chart2;
