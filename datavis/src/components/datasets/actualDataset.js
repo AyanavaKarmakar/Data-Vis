@@ -1,4 +1,4 @@
-[
+export const wineDataset = [
     {
       "unknown": 1,
       "alcohol": 14.23,
