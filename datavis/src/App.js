@@ -1,8 +1,10 @@
+import Chart1 from "./components/Chart1";
+
 function App() {
   return (
     <>
-      Hello!
-    </> 
+      <Chart1 />
+    </>
   );
 }
 
