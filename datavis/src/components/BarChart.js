@@ -20,10 +20,10 @@ const BarChart = () => {
   let alcoholAndmalicAcid = [];
   alcoholAndmalicAcid = data.map(handleMapFunction);
   
-  //Chart style. used in option
-  const style = {
-    height: "50vh",
-    width: "100%"
+  // Chart style. used in option
+   const style = {
+     height: "50vh",
+     width: "100%"
   };
 
   // echarts {option}. used when passing to ReactEcharts

@@ -20,10 +20,10 @@ const ScatterChart = () => {
   hueDataAndColorIntensity = data.map(handleMapFunction);
 
   //Chart style. used in option
-  const style = {
-    height: "50vh",
-    width: "100%"
-  };
+   const style = {
+     height: "50vh",
+     width: "100%"
+   };
 
   // echarts {option}. used when passing to ReactEcharts
   const option = {
