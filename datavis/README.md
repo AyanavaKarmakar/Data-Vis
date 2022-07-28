@@ -10,4 +10,4 @@ You may also see any lint errors in the console.
 
 ## Screenshot of both the charts =>
 
-![image](/assets/Capture.PNG)
+![image](./assets/Capture.PNG)
