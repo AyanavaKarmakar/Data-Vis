@@ -39,7 +39,6 @@ const ScatterChart = () => {
     ]
   }
 
-
   return (
     <>
       <ReactEcharts option={option} style={style} />

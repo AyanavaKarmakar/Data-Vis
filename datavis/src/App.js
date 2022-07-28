@@ -1,11 +1,11 @@
 import ScatterChart from "./components/ScatterChart";
-import Chart2 from "./components/Chart2";
+import BarChart from "./components/BarChart";
 
 function App() {
   return (
     <>
       <ScatterChart/>
-      <Chart2 />
+      <BarChart />
     </>
   );
 }
