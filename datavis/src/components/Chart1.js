@@ -1,50 +1,45 @@
 import ReactEcharts from "echarts-for-react";
-import {actualDataset} from './datasets/actualDataset';
 
 const Chart1 = () => {
 
-  const getOption = () => {
+  // importing the json file
+  const data = require("./datasets/actualDataset");
 
-    let colorIntensity = [];
-    let hue = [];
+  // map the color intensity and hue parameters in an empty array
 
-    Object.entries(actualDataset).forEach(entry => {
-      colorIntensity = [...colorIntensity, entry[10]];
-      entry[11].forEach(e => {
-        hue = [...new Set([...hue, e.name])];
-      });
-    });
+  // function to handle map operation
+  const handleMapFunction = (item) => {
+    return [item.colorIntensity, item.hue];
+  }
 
-    let options = colorIntensity.map(color => {
-      let obj = {};
-      obj.title = {
-        text: `Something Somthing, ${color}`
-      };
-      obj.series = [
-        {
-           stack: "group",
-           data: actualDataset[colorIntensity]
-        },
-        {
-           stack: "group",
-           data: actualDataset[hue]
-        }
-      ];
-      return obj;
-    });
+  // created an empty array. used in options to use as a data array
+  let hueDataAndColorIntensity = [];
+  hueDataAndColorIntensity = data.map(handleMapFunction);
 
-    return {
-      options: options
-    };
+  //Chart style. used in options
+  const style = {
+    height: "50vh",
+    width: "100%"
   };
+
+  // echarts {option}. used when passing to ReactEcharts
+  const option = {
+    xAxis: {},
+    yAxis: {},
+    series: [
+      {
+        symbolSize: 20,
+        data: hueDataAndColorIntensity,
+        type: 'scatter'
+      }
+    ]
+  }
+
 
   return (
     <>
-      <ReactEcharts
-        option={getOption()}
-        style={{ height: "80vh", left: 50, top: 50, width: "90vw" }}
-        opts={{ renderer: "svg" }}
-      />
+      <center>Scatter Chart for Color Intensity v/s Hue</center>
+      <ReactEcharts option={option} style={style} />
     </>
   );
 };
