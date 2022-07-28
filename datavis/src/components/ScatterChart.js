@@ -19,7 +19,7 @@ const ScatterChart = () => {
   let hueDataAndColorIntensity = [];
   hueDataAndColorIntensity = data.map(handleMapFunction);
 
-  //Chart style. used in options
+  //Chart style. used in option
   const style = {
     height: "50vh",
     width: "100%"

@@ -10,28 +10,37 @@ const BarChart = () => {
   // importing the json file
   const data = require("./datasets/actualDataset");
 
+  // map the alcohol and malic acid parameters in an empty array
+  // function to handle map operation
+  const handleMapFunction = (item) => {
+    return [item.alcohol, item.malicAcid];
+  }
 
-
-
-  //Chart style. used in options
+  // created an empty array. used in options to use as a data array
+  let alcoholAndmalicAcid = [];
+  alcoholAndmalicAcid = data.map(handleMapFunction);
+  
+  //Chart style. used in option
   const style = {
     height: "50vh",
     width: "100%"
   };
 
   // echarts {option}. used when passing to ReactEcharts
+  // used bar with background instead of the standard one
+  // source === 'https://echarts.apache.org/examples/en/editor.html?c=bar-background'
   const option = {
-    xAxis: {
-      type: 'category',
-      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    },
-    yAxis: {
-      type: 'value'
-    },
+    title: { text: 'Alcohol v/s Average of Malic Acid' },
+    xAxis: { name: 'Alcohol' },
+    yAxis: { name: 'Average of Malic Acid' },
     series: [
       {
-        data: [120, 200, 150, 80, 70, 110, 130],
-        type: 'bar'
+        data: alcoholAndmalicAcid,
+        type: 'bar',
+        showBackground: true,
+        backgroundStyle: {
+          color: 'rgba(180, 180, 180, 0.2)'
+        }
       }
     ]
   };
