@@ -1,10 +1,10 @@
-import Chart1 from "./components/Chart1";
+import ScatterChart from "./components/ScatterChart";
 import Chart2 from "./components/Chart2";
 
 function App() {
   return (
     <>
-      <Chart1 />
+      <ScatterChart/>
       <Chart2 />
     </>
   );

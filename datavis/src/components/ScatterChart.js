@@ -1,12 +1,11 @@
 import ReactEcharts from "echarts-for-react";
 
-const Chart1 = () => {
+const ScatterChart = () => {
 
   // importing the json file
   const data = require("./datasets/actualDataset");
 
   // map the color intensity and hue parameters in an empty array
-
   // function to handle map operation
   const handleMapFunction = (item) => {
     return [item.colorIntensity, item.hue];
@@ -38,10 +37,10 @@ const Chart1 = () => {
 
   return (
     <>
-      <center>Scatter Chart for Color Intensity v/s Hue</center>
+      <center><b>Scatter Chart for Color Intensity v/s Hue</b></center>
       <ReactEcharts option={option} style={style} />
     </>
   );
 };
 
-export default Chart1;
+export default ScatterChart;
