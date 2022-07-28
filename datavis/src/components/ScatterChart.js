@@ -1,7 +1,11 @@
+// source URL === https://echarts.apache.org/en/index.html
 import ReactEcharts from "echarts-for-react";
 
+// scatter plot to be drawn between “Color Intensity”
+// on the horizontal axis and “Hue” on the vertical axis.
 const ScatterChart = () => {
 
+  // the wine data set csv file has been processed to a json file
   // importing the json file
   const data = require("./datasets/actualDataset");
 
@@ -23,11 +27,12 @@ const ScatterChart = () => {
 
   // echarts {option}. used when passing to ReactEcharts
   const option = {
-    xAxis: {},
-    yAxis: {},
+    title: { text: 'Scatter Chart for Color Intensity v/s Hue' },
+    xAxis: { name: 'Color Intensity' },
+    yAxis: { name: 'Hue' },
     series: [
       {
-        symbolSize: 20,
+        symbolSize: 15,
         data: hueDataAndColorIntensity,
         type: 'scatter'
       }
@@ -37,7 +42,6 @@ const ScatterChart = () => {
 
   return (
     <>
-      <center><b>Scatter Chart for Color Intensity v/s Hue</b></center>
       <ReactEcharts option={option} style={style} />
     </>
   );
