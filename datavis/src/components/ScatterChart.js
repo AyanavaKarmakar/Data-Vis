@@ -10,14 +10,11 @@ const ScatterChart = () => {
   const data = require("./datasets/actualDataset");
 
   // map the color intensity and hue parameters in an empty array
-  // function to handle map operation
-  const handleMapFunction = (item) => {
-    return [item.colorIntensity, item.hue];
-  }
-
   // created an empty array. used in options to use as a data array
   let hueDataAndColorIntensity = [];
-  hueDataAndColorIntensity = data.map(handleMapFunction);
+  hueDataAndColorIntensity = data.map((item) => {
+    return [item.colorIntensity, item.hue];
+  });
 
   //Chart style. used in option
    const style = {
