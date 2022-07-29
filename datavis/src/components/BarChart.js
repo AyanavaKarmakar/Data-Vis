@@ -19,6 +19,7 @@ const BarChart = () => {
   // created an empty array. used in options to use as a data array
   let alcoholAndmalicAcid = [];
   alcoholAndmalicAcid = data.map(handleMapFunction);
+  console.log(alcoholAndmalicAcid);
   
   // Chart style. used in option
    const style = {
