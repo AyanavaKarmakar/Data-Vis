@@ -1,6 +1,8 @@
 // source URL === https://echarts.apache.org/en/index.html
 import ReactEcharts from "echarts-for-react";
 
+// TODO Fix comments
+
 // Bar chart to be drawn showing the “Alcohol” category
 // on the horizontal axis and the average of “Malic Acid”
 // for each class on the vertical axis
@@ -9,17 +11,61 @@ const BarChart = () => {
   // the wine data set csv file has been processed to a json file
   // importing the json file
   const data = require("./datasets/actualDataset");
+  
+  // function to calculate average
+  const calculateAverage = (array) => {
+    let total = 0;
+    let count = 0;
 
-  // map the alcohol and malic acid parameters in an empty array
-  // function to handle map operation
-  const handleMapFunction = (item) => {
-    return [item.alcohol, item.malicAcid];
+    array.forEach((item) => {
+      total += parseInt(item);
+      count++;
+    });
+
+    return (total / count);
   }
 
-  // created an empty array. used in options to use as a data array
-  let alcoholAndmalicAcid = [];
-  alcoholAndmalicAcid = data.map(handleMapFunction);
-  console.log(alcoholAndmalicAcid);
+  // fetching malic acid data for class 1 
+  let malicAcidValuesForClass1 = [];
+  malicAcidValuesForClass1 = data.map((item) => {
+    if (item.class === 1) {
+      return [item.malicAcid];
+    }
+  });
+
+  // fetching malic acid data for class 2 
+  let malicAcidValuesForClass2 = [];
+  malicAcidValuesForClass2 = data.map((item) => {
+    if (item.class === 2) {
+      return [item.malicAcid];
+    }
+  });
+
+  // fetching malic acid data for class 3 
+  let malicAcidValuesForClass3 = [];
+  malicAcidValuesForClass3 = data.map((item) => {
+    if (item.class === 3) {
+      return [item.malicAcid];
+    }
+  });
+
+  // cleans up undefined values
+  // class 1 ends at 58th index === 59th position
+  // total number of values === 178
+  // splice(start, deleteCount)
+  // ref === https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
+  malicAcidValuesForClass1.splice(59, 178);
+
+  malicAcidValuesForClass2.splice(0, 59);
+  malicAcidValuesForClass2.splice(71, 119);
+
+  malicAcidValuesForClass3.splice(0, 130);
+  
+
+  // finds average
+  const averageMalicAcidValuesForClass1 = calculateAverage(malicAcidValuesForClass1);
+  const averageMalicAcidValuesForClass2 = calculateAverage(malicAcidValuesForClass2);
+  const averageMalicAcidValuesForClass3 = calculateAverage(malicAcidValuesForClass3);
   
   // Chart style. used in option
    const style = {
@@ -31,12 +77,16 @@ const BarChart = () => {
   // used bar with background instead of the standard one
   // source === 'https://echarts.apache.org/examples/en/editor.html?c=bar-background'
   const option = {
-    title: { text: 'Alcohol v/s Average of Malic Acid' },
-    xAxis: { name: 'Alcohol' },
-    yAxis: { name: 'Average of Malic Acid' },
+    title: { text: 'Alcohol v/s Malic Acid' },
+    xAxis: { 
+      name: 'Alcohol',
+      type: 'category',
+      data: ['Class 1', 'Class 2', 'Class 3']
+    },
+    yAxis: { name: 'Malic Acid' },
     series: [
       {
-        data: alcoholAndmalicAcid,
+        data: [averageMalicAcidValuesForClass1, averageMalicAcidValuesForClass2, averageMalicAcidValuesForClass3],
         type: 'bar',
         showBackground: true,
         backgroundStyle: {
