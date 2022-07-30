@@ -1,9 +1,31 @@
+import React, { useState, useEffect } from "react";
+
 // source URL === https://echarts.apache.org/en/index.html
 import ReactEcharts from "echarts-for-react";
 
 // scatter plot to be drawn between “Color Intensity”
 // on the horizontal axis and “Hue” on the vertical axis.
 const ScatterChart = () => {
+  const [dimensions, setDimensions] = useState({
+    height: window.innerHeight,
+    width: window.innerWidth,
+  });
+
+  useEffect(() => {
+    function handleResize() {
+      setDimensions({
+        height: window.innerHeight,
+        width: window.innerWidth,
+      });
+    }
+    window.addEventListener("resize", handleResize);
+
+    //clean up
+    return (_) => {
+      window.removeEventListener("resize", handleResize);
+    };
+  });
+
   // the wine data set csv file has been processed to a json file
   // importing the json file
   const data = require("./datasets/actualDataset");
@@ -21,7 +43,6 @@ const ScatterChart = () => {
     width: "100%",
   };
 
-    
   // echarts {option}. used when passing to ReactEcharts
   const option = {
     title: { text: "Scatter Chart for Color Intensity v/s Hue" },
