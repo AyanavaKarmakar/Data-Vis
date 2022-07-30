@@ -1,8 +1,6 @@
 // source URL === https://echarts.apache.org/en/index.html
 import ReactEcharts from "echarts-for-react";
 
-// TODO Fix comments
-
 // Bar chart to be drawn showing the “Alcohol” category
 // on the horizontal axis and the average of “Malic Acid”
 // for each class on the vertical axis
