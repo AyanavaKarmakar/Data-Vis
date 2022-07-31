@@ -1,6 +1,5 @@
 // source URL === https://echarts.apache.org/en/index.html
 import ReactEcharts from "echarts-for-react";
-// import '../styles/styles.css';
 
 // Bar chart to be drawn showing the “Alcohol” category
 // on the horizontal axis and the average of “Malic Acid”
@@ -25,39 +24,33 @@ const BarChart = () => {
 
   // fetching malic acid data for class 1
   let malicAcidValuesForClass1 = [];
-  malicAcidValuesForClass1 = data.map((item) => {
-    if (item.class === 1) {
+  malicAcidValuesForClass1 = data
+    .filter((item) => {
+      return item.class === 1;
+    })
+    .map((item) => {
       return [item.malicAcid];
-    }
-  });
+    });
 
   // fetching malic acid data for class 2
   let malicAcidValuesForClass2 = [];
-  malicAcidValuesForClass2 = data.map((item) => {
-    if (item.class === 2) {
+  malicAcidValuesForClass2 = data
+    .filter((item) => {
+      return item.class === 2;
+    })
+    .map((item) => {
       return [item.malicAcid];
-    }
-  });
+    });
 
   // fetching malic acid data for class 3
   let malicAcidValuesForClass3 = [];
-  malicAcidValuesForClass3 = data.map((item) => {
-    if (item.class === 3) {
+  malicAcidValuesForClass3 = data
+    .filter((item) => {
+      return item.class === 3;
+    })
+    .map((item) => {
       return [item.malicAcid];
-    }
-  });
-
-  // cleans up undefined values
-  // class 1 ends at 58th index === 59th position
-  // total number of values === 178
-  // splice(start, deleteCount)
-  // ref === https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
-  malicAcidValuesForClass1.splice(59, 178);
-
-  malicAcidValuesForClass2.splice(0, 59);
-  malicAcidValuesForClass2.splice(71, 119);
-
-  malicAcidValuesForClass3.splice(0, 130);
+    });
 
   // finds average
   const averageMalicAcidValuesForClass1 = calculateAverage(
@@ -76,10 +69,11 @@ const BarChart = () => {
     width: "100%",
   };
 
-  
-  window.onresize = function() {
-    style.height.resize();
-  };
+  /*
+    window.onresize = function () {
+      style.height.resize();
+    };
+  */
 
   // echarts {option}. used when passing to ReactEcharts
   // used bar with background instead of the standard one
