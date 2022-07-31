@@ -24,7 +24,7 @@ const ScatterChart = () => {
     
   // echarts {option}. used when passing to ReactEcharts
   const option = {
-    title: { text: "Scatter Chart for Color Intensity v/s Hue" },
+    title: { text: "Color Intensity v/s Hue" },
     xAxis: { name: "Color Intensity" },
     yAxis: { name: "Hue" },
     series: [
