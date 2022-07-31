@@ -69,12 +69,6 @@ const BarChart = () => {
     width: "100%",
   };
 
-  /*
-    window.onresize = function () {
-      style.height.resize();
-    };
-  */
-
   // echarts {option}. used when passing to ReactEcharts
   // used bar with background instead of the standard one
   // source === 'https://echarts.apache.org/examples/en/editor.html?c=bar-background'
