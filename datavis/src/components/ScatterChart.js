@@ -1,13 +1,13 @@
 // source URL === https://echarts.apache.org/en/index.html
 import ReactEcharts from "echarts-for-react";
 
+// importing the json file
+// the wine data set csv file has been processed to a json file
+import data from "./datasets/actualDataset";
+
 // scatter plot to be drawn between “Color Intensity”
 // on the horizontal axis and “Hue” on the vertical axis.
 const ScatterChart = () => {
-  // the wine data set csv file has been processed to a json file
-  // importing the json file
-  const data = require("./datasets/actualDataset");
-
   // map the color intensity and hue parameters in an empty array
   // created an empty array. used in options to use as a data array
   let hueDataAndColorIntensity = [];
@@ -21,7 +21,6 @@ const ScatterChart = () => {
     width: "100%",
   };
 
-    
   // echarts {option}. used when passing to ReactEcharts
   const option = {
     title: { text: "Color Intensity v/s Hue" },

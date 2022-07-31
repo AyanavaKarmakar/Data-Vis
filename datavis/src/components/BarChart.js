@@ -1,14 +1,14 @@
 // source URL === https://echarts.apache.org/en/index.html
 import ReactEcharts from "echarts-for-react";
 
+// importing the json file
+// the wine data set csv file has been processed to a json file
+import data from "./datasets/actualDataset";
+
 // Bar chart to be drawn showing the “Alcohol” category
 // on the horizontal axis and the average of “Malic Acid”
 // for each class on the vertical axis
 const BarChart = () => {
-  // the wine data set csv file has been processed to a json file
-  // importing the json file
-  const data = require("./datasets/actualDataset");
-
   // function to calculate average
   const calculateAverage = (array) => {
     let total = 0;
