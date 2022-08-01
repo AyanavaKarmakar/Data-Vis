@@ -15,7 +15,7 @@ const BarChart = () => {
     let count = 0;
 
     array.forEach((item) => {
-      total += parseInt(item);
+      total += parseFloat(item);
       count++;
     });
 
