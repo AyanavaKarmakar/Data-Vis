@@ -1,27 +1,33 @@
-// source URL === https://echarts.apache.org/en/index.html
+/**
+ * source URL === https://echarts.apache.org/en/index.html
+ */
 import ReactEcharts from "echarts-for-react";
 
-// importing the json file
-// the wine data set csv file has been processed to a json file
+/**
+ * the wine data set csv file has been processed to a json file
+ */
 import data from "./datasets/actualDataset";
 
-// scatter plot to be drawn between “Color Intensity”
-// on the horizontal axis and “Hue” on the vertical axis.
+/**
+ * ScatterChart: plot drawn between "Color Intensity"
+ * on the horizontal axis and "Hue" on the vertical axis
+ */
 const ScatterChart = () => {
-  // map the color intensity and hue parameters in an empty array
-  // created an empty array. used in options to use as a data array
-  let hueDataAndColorIntensity = [];
-  hueDataAndColorIntensity = data.map((item) => {
+  let hueDataAndColorIntensity = data.map((item) => {
     return [item.colorIntensity, item.hue];
   });
 
-  //Chart style. used in option
+  /**
+   * Chart style. Used in option
+   */
   const style = {
     height: "400px",
     width: "100%",
   };
 
-  // echarts {option}. used when passing to ReactEcharts
+  /**
+   * echarts {option}. used when passing to ReactEcharts 
+   */ 
   const option = {
     title: { text: "Color Intensity v/s Hue" },
     xAxis: { name: "Color Intensity" },
